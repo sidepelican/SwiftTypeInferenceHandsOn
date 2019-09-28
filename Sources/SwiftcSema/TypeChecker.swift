@@ -49,6 +49,8 @@ public final class TypeChecker {
                     }
                     
                     // <Q05 hint="call addConstraint"/>
+                    cts.addConstraint(kind: .conversion, left: exprTy, right: varTy)
+                    // end
             },
                 didFoundSolution: nil,
                 didApplySolution: { (cts, solution, expr, context) -> Expr in
@@ -56,6 +58,11 @@ public final class TypeChecker {
                     vd.type = varTy
 
                     // <Q13 hint="see visitCallExpr" />
+                    // TypeCheckConstraints.cpp L:2687
+                    if let _ = varTy as? OptionalType {
+                        return try solution.coerce(expr: expr, to: varTy)
+                    }
+                    // end
                     return expr
             })
                 
