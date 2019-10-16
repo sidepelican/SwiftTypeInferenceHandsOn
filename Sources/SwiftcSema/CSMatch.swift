@@ -188,7 +188,7 @@ extension ConstraintSystem {
         let subOptions = decompositionOptions(options)
         
         // <Q02 hint="match arg and ret" />
-        switch matchTypes(kind: subKind, left: leftArg, right: rightArg, options: subOptions) {
+        switch matchTypes(kind: subKind, left: rightArg, right: leftArg, options: subOptions) {
         case .solved:
             return matchTypes(kind: subKind, left: leftRet, right: rightRet, options: subOptions)
         case .failure:

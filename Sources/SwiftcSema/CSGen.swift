@@ -44,7 +44,7 @@ public final class ConstraintGenerator : ASTVisitor {
         let tv = cts.createTypeVariable()
         
         // <Q07 hint="call addConstraint" />
-        cts.addConstraint(kind: .conversion, left: FunctionType(parameter: arg, result: tv), right: callee)
+        cts.addConstraint(kind: .applicableFunction, left: FunctionType(parameter: arg, result: tv), right: callee)
         // end
         
         return tv
